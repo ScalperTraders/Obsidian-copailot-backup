@@ -1,0 +1,24 @@
+# Obsidian cache i embeddingi
+.smart-env/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Klucze API (nigdy nie commituj!)
+.obsidian/plugins/copilot/data.json
+
+# Pliki binarne / archiwa pluginów
+.obsidian/plugins/*.zip
+
+# Pluginy z własnym .git (embedded repos)
+.obsidian/plugins/obsidian-show-hidden-files/
+
+# Pluginy z hardkodowanymi sekretami OAuth
+.obsidian/plugins/remotely-save/
+
+# System
+Thumbs.db
+.DS_Store
+
+# Claude Code tymczasowe
+.claude/downloads/
+.claude/paste-cache/
