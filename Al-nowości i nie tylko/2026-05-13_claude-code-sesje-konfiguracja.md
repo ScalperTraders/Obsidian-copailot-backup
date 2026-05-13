@@ -47,12 +47,36 @@ Pobrano i zainstalowano repozytorium `Szewowsky/claude-code-obsidian`:
 - `.claude/CLAUDE.md` → reguły pracy z vaultem (persona Rafał, język polski, struktura folderów, tagowanie, git workflow)
 - `tags.md` → starter kit tagów
 
-### 20:59+ — Obecna sesja (przeglądanie logów)
+### 20:59 — Przeglądanie logów sesji
 
 Przeglądanie i analiza plików `.jsonl` z logami wszystkich poprzednich sesji dnia. Logi przechowywane są w:
 
 ```
 C:\Users\acer\.claude\projects\D--Obsydian-Sztuczna-inteligencja\
+```
+
+### 21:00+ — Konfiguracja Git i obsidian-git
+
+Inicjalizacja git i podłączenie remote do GitHub:
+
+- `git init` w katalogu vaultu
+- remote: `https://github.com/ScalperTraders/Obsidian-copailot-backup.git`
+- stworzony `.gitignore` wykluczający klucze API, cache, pliki binarne
+
+**Pierwszy push** zablokowany przez GitHub Push Protection — `remotely-save/main.js` zawierał hardkodowane Google OAuth credentials (wbudowane w kod pluginu). Plugin wykluczono z gita.
+
+Skonfigurowano `obsidian-git/data.json`:
+- auto-commit + auto-push co **10 minut**
+- pull przy starcie Obsidian
+- pull przed każdym pushem
+
+**Efekt:** obsidian-git wykrył repo i od razu wykonał pierwszy automatyczny backup (commit `ea6c5ab`).
+
+```
+git log:
+3a37a86  config: obsidian-git — auto-push co 10 min
+ea6c5ab  vault backup: 2026-05-13 22:32:42  ← pierwszy auto-backup
+40c9e19  init: konfiguracja vaultu Obsidian z Claude Code
 ```
 
 ## Struktura konfiguracji Claude Code
@@ -77,3 +101,6 @@ C:\Users\acer\.claude\projects\D--Obsydian-Sztuczna-inteligencja\
 
 > [!tip] Logi sesji
 > Każda sesja Claude Code jest zapisywana jako plik `.jsonl` — można je odczytać i przeanalizować, żeby zobaczyć co dokładnie było robione. Przydatne do audytu i nauki.
+
+> [!warning] GitHub Push Protection
+> Pluginy Obsidian mogą zawierać hardkodowane sekrety (OAuth, API keys) w `main.js`. GitHub to wykryje i zablokuje push. Rozwiązanie: wykluczyć problematyczne pluginy z gita w `.gitignore`. Dotyczyło pluginu `remotely-save`.
