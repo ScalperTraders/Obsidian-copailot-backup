@@ -4,7 +4,7 @@ Obsidian vault — Twój Second Brain zarządzany przez Claude Code.
 
 ## Persona
 
-**Persona:** [Rafał — pasjonat AI, zainteresowany technologią i tradingiem"]
+**Persona:** Rafał — pasjonat AI, zainteresowany technologią i tradingiem
 
 **Język:** Polski
 
